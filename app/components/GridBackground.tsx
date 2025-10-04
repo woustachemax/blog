@@ -16,20 +16,39 @@ const useMobile = ()=>{
 
 export function GridBackground() {
   const [mounted, setMounted] = useState(false)
+  const [dimensions, setDimensions] = useState({ cols: 80, rows: 30 })
   const isMobile = useMobile() 
 
-  useEffect(() => setMounted(true), [])
+  useEffect(() => {
+    setMounted(true)
+    
+    const updateDimensions = () => {
+      const cols = Math.floor(window.innerWidth / 24)
+      const rows = Math.floor(window.innerHeight / 24)
+      setDimensions({ cols, rows })
+    }
+    
+    updateDimensions()
+    window.addEventListener('resize', updateDimensions)
+    return () => window.removeEventListener('resize', updateDimensions)
+  }, [])
 
   if (!mounted || isMobile) return null
 
-  const rows = 30
-  const cols = 80
-  const safeCols = [20, 60]
+  const { cols, rows } = dimensions
+  
+  const maxContentWidth = 896
+  const viewportWidth = typeof window !== 'undefined' ? window.innerWidth : 1920
+  const leftPadding = Math.max((viewportWidth - maxContentWidth) / 2, 16)
+  const rightPadding = leftPadding
+  
+  const leftBlockCols = Math.floor(leftPadding / 24)
+  const rightBlockStart = cols - Math.floor(rightPadding / 24)
 
   const cells = Array.from({ length: rows * cols }, (_, i) => {
     const x = i % cols
-    const inSafeZone = x >= safeCols[0] && x <= safeCols[1]
-    if (inSafeZone) return 0
+    const inBlockZone = x < leftBlockCols || x > rightBlockStart
+    if (!inBlockZone) return 0
     return Math.random() < 0.04 ? Math.floor(Math.random() * 4) + 1 : 0
   })
 
