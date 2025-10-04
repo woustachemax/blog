@@ -4,8 +4,9 @@ import matter from 'gray-matter';
 import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-    const filePath = path.join(process.cwd(), 'blog', `${params.slug}.md`);
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
+    const filePath = path.join(process.cwd(), 'blog', `${slug}.md`);
     
     if (!fs.existsSync(filePath)) {
         notFound();
