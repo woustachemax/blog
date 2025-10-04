@@ -1,7 +1,30 @@
+"use client"
+import { useEffect, useState } from "react"
+
+const useMobile = ()=>{
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(()=>{
+    const check=()=> setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener('resize', check);
+    return ()=>window.removeEventListener('resize', check);
+  },[])
+
+  return isMobile;
+}
+
 export function GridBackground() {
+  const [mounted, setMounted] = useState(false)
+  const isMobile = useMobile() 
+
+  useEffect(() => setMounted(true), [])
+
+  if (!mounted || isMobile) return null
+
   const rows = 30
   const cols = 80
-  const safeCols = [20, 60] 
+  const safeCols = [20, 60]
 
   const cells = Array.from({ length: rows * cols }, (_, i) => {
     const x = i % cols

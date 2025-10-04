@@ -27,7 +27,7 @@ export function Hero() {
       cool stuff and learning a lot. I thought it would be a good idea to share
       my learnings and experiences with the world. So, here I am, starting my
       blog. I hope you find something useful here. If you do, please let me know!
-      If you have any questions or suggestions, feel free to reach drop me a mail{" "}
+      If you have any questions or suggestions, feel free to drop me a mail{" "}
       <a
       href="mailto:sid2011thakkar@gmail.com"
       target="_blank"
