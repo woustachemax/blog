@@ -17,7 +17,7 @@ Before jumping any further, I must warn you that this wasn't a decision made on 
 
 Let's not get ahead of ourselves and get lost in the jungle of jargon; what I mean by that is, app development has a more accepting and stronger outsourcing culture. It's like using libraries in Python or npm packages in JavaScript; app dev has services that let you worry less about writing repetitive code for things like authentication, databases, messaging, and sometimes even server-side functions.
 
-These tools are known as Backend-as-a-Service, and examples include Firebase, Appwrite, and Supabase. Now, why is this important? Because if you're someone like me who's looking to pivot, you want to kickstart your application and get the MVP out first before actually thinking about scaling. So before starting with app development, make sure to familiarize yourself with one of these tools. Since we're close to October and the month of Hacktoberfest, I'd suggest going with Appwrite. They host a Hacktoberfest hackathon, and it's a great opportunity to get started with mobile app development; the incentives are genuinely motivating.
+These tools are known as Backend-as-a-Service, and examples include Firebase, Appwrite, and Supabase. Now, why is this important? Because it lets you focus on the client side and get your MVP out fast before worrying about scaling. So before starting with app development, make sure to familiarize yourself with one of these tools. Since we're close to October and the month of Hacktoberfest, I'd suggest going with Appwrite. They host a Hacktoberfest hackathon, and it's a great opportunity to get started with mobile app development; the incentives are genuinely motivating.
 
 ---
 
