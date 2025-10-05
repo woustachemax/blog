@@ -45,7 +45,7 @@ npm run reset-project
 
 to get rid of all the boilerplate and set up a ready-to-run project.
 
-For styling, there's **NativeWind**, which brings Tailwind CSS-like utility classes to React Native. No more writing repetitive styles or dealing with verbose `StyleSheet.create` calls—just focus on building. You can install it with:
+For styling, there's **NativeWind**, which brings Tailwind CSS-like utility classes to React Native. No more writing repetitive styles or dealing with verbose `StyleSheet.create` calls, just focus on building. You can install it with:
 
 ```bash
 npm install nativewind
@@ -53,7 +53,7 @@ npm install nativewind
 
 You can then set up nativewind by following their docs: https://www.nativewind.dev/docs/getting-started/installation
 
-The main entry point is usually `index.tsx`, and the `_layout.tsx` file (especially if you're using Expo Router) helps define your app's file-based routing structure—very similar to how `app/` and `pages/` work in Next.js.
+The main entry point is usually `index.tsx`, and the `_layout.tsx` file (especially if you're using Expo Router) helps define your app's file-based routing structure, very similar to how `app/` and `pages/` work in Next.js.
 
 ---
 
