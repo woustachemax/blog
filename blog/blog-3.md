@@ -1,8 +1,8 @@
 ---
-title: "Jargon Sucks. But Vector Embeddings? They're Actually Cool."
+title: "Beyond just understanding."
 author: "Siddharth Thakkar"
 date: "2025-10-10"
-readingTime: 5 min"
+readingTime: "5 min"
 ---
 
 Hi there, I'm Siddharth. I'm a full-stack developer and a recent graduate. I've been constantly experimenting with new things, and one of the most overused words on Twitter recently has been semantic search or vector embeddings. I was done feeling dumb, so I googled it, learned it, and made a project out of it. If that sounds interesting to you, then please continue reading, and if it still doesn't sound interesting to you, then it might very soon, so don't stop reading (Reader retention 101).
