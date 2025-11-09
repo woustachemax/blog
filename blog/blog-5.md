@@ -1,6 +1,5 @@
 ---
 title: "I Built an AI Intern That Actually Works (No, Really)"
-author: "Siddharth Thakkar"
 date: "2025-11-09"
 readingTime: "9 min"
 ---
