@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
@@ -17,6 +18,26 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
     return (
         <div className="max-w-4xl mx-auto px-4 py-8 font-serif">
+            <Link 
+                href="/" 
+                className="inline-flex items-center gap-2 text-green-400 hover:text-green-200 mb-6 transition-colors"
+            >
+                <svg 
+                    className="w-5 h-5" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                >
+                    <path 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        strokeWidth={2} 
+                        d="M15 19l-7-7 7-7" 
+                    />
+                </svg>
+                Back to Home
+            </Link>
+
             <h1 className="text-4xl font-bold mb-4 sm:text-3xl text-green-200">{data.title}</h1>
             <div className='flex gap-4 text-gray-400 mb-8'>
                <div>Published On: {data.date}</div>
