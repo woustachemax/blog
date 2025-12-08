@@ -1,5 +1,5 @@
 ---
-title: "I Built a Component Library That Looks Like a 1980s Terminal (And You Might Actually Use It)"
+title: "I Built a Component Library (And You Might Actually Use It)"
 date: "2025-12-08"
 readingTime: "6 min"
 ---
