@@ -1,6 +1,5 @@
 ---
 title: "My Unrealistic Goals for January 2026 (And Why I'll Probably Fail)"
-author: "Siddharth Thakkar"
 date: "2025-12-30"
 readingTime: "7 min"
 ---
