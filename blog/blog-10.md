@@ -134,14 +134,14 @@ This is not a sad story about getting confused by distributed systems, but a sto
 
 ## First Principles Thinking
 
-Remember when I said I'm thinking about the Sentry-like tool from first principles? This is what I mean. Instead of just saying "I'll use WebSockets because everyone uses WebSockets," I'm asking:
+Remember when I said I'm thinking about the Sentry like tool from first principles? This is what I mean. Instead of just saying "I'll use WebSockets because everyone uses WebSockets," I'm asking:
 
 - Why do we need real-time communication?
 - What are the bottlenecks when scaling WebSocket connections?
 - How do microservices communicate efficiently?
 - When should I use Redis Pub/Sub vs. direct HTTP calls vs. message queues?
 
-These are the questions that lead to better architecture. Not "what's the trendy tech stack," but "what problem am I actually solving, and what's the right tool for it?" Despite those job offers not working out because of things out of my control, it only motivated me to build more, to learn more.
+These are the questions that lead to better architecture. Not "what's the trendy tech stack," but "what problem am I actually solving, and what's the right tool for it?".
 
 ---
 
@@ -151,7 +151,7 @@ AI is growing rapidly, and it's only fair to use it to build faster. But here's 
 
 I use AI for boilerplate code, for exploring APIs I haven't used before, for refactoring. But when I hit a bottleneck, when something doesn't work the way I expected, I drop AI and go old-school. I read documentation. I draw diagrams on paper. I implement things manually to understand them.
 
-This is the balance I've found: use AI to accelerate, but never as a crutch. If you can't explain what your code does without AI, you don't understand it well enough yet. Four months after learning this approach, I've built tools and projects that solved pain points from my experience.
+This is the balance I've found: use AI to accelerate, but never as a crutch. If you can't explain what your code does without AI, you don't understand it well enough yet.
 
 ---
 
