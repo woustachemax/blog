@@ -63,9 +63,9 @@ The challenge is migrations. In production, your database schema is alive. You c
 
 * **Step 1:** `alembic revision --autogenerate -m "add phone number"`
 * **Step 2:** Inspect the script.
-* **Step 3:** `alembic upgrade head`
+* **Step 3:** `alembic upgrade head` (I'll admit it, I missed prisma a bit too much here!)
 
-I'll admit it, I missed prisma a bit too much here!
+
 ---
 
 ## Docker and AWS
@@ -82,6 +82,6 @@ So go run `pip install fastapi uvicorn sqlalchemy alembic` and build that backen
 
 ---
 
-**tl;dr** Swapped Express for FastAPI and Prisma for SQLAlchemy. JWT and Bcrypt stay the same. Use Alembic for migrations. Dockerize and push to AWS for the win. Happy New Year <3!
+**tl;dr** Swapped Express for FastAPI and Prisma for SQLAlchemy. JWT and Bcrypt stay the same. Use Alembic for migrations. Dockerize and push to AWS for the win. Happy New Day (until Anthropic finally figures out how to elinminate SWEs) <3!
 
 ---
