@@ -35,9 +35,8 @@ export function GridBackground() {
   if (!mounted) return null
 
   const cells = Array.from({ length: dimensions.rows * dimensions.cols }, (_, i) => {
-    // Deterministic randomness based on index
     const seed = (i * 1234567) % 1000
-    const isActive = seed < 25 // low density
+    const isActive = seed < 25
     if (!isActive) return null
 
     return {
@@ -49,7 +48,6 @@ export function GridBackground() {
 
   return (
     <div className="fixed inset-0 h-full w-full -z-10 bg-black overflow-hidden pointer-events-none">
-      {/* Persistent Grid Lines - extremely subtle but slightly louder */}
       <div
         className="absolute inset-0 opacity-[0.06]"
         style={{
@@ -58,7 +56,6 @@ export function GridBackground() {
         }}
       />
 
-      {/* Grid Glow Cells */}
       <div
         className="absolute inset-0 grid"
         style={{
@@ -72,8 +69,7 @@ export function GridBackground() {
               <div
                 className="absolute inset-[2px] rounded-sm"
                 style={{
-                  background: `rgba(16, 185, 129, ${cell.opacity * 2.5})`, // Static intensity
-                  // No animation or radial gradient, just blocky-ish glow
+                  background: `rgba(16, 185, 129, ${cell.opacity * 2.5})`,
                   boxShadow: `0 0 8px rgba(16, 185, 129, ${cell.opacity * 0.5})`,
                 }}
               />
@@ -82,11 +78,9 @@ export function GridBackground() {
         ))}
       </div>
 
-      {/* Deep Shadow Overlays for focus */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-80" />
       <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black opacity-60" />
 
-      {/* Noise Texture */}
       <div className="absolute inset-0 opacity-[0.02] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
     </div>
   )
