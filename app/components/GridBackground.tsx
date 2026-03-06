@@ -1,79 +1,93 @@
 "use client"
 import { useEffect, useState } from "react"
 
-const useMobile = ()=>{
+const useMobile = () => {
   const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(()=>{
-    const check=()=> setIsMobile(window.innerWidth < 768);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
     check();
     window.addEventListener('resize', check);
-    return ()=>window.removeEventListener('resize', check);
-  },[])
+    return () => window.removeEventListener('resize', check);
+  }, [])
 
   return isMobile;
 }
 
 export function GridBackground() {
   const [mounted, setMounted] = useState(false)
-  const [dimensions, setDimensions] = useState({ cols: 80, rows: 30 })
-  const isMobile = useMobile() 
+  const [dimensions, setDimensions] = useState({ cols: 0, rows: 0 })
+  const isMobile = useMobile()
 
   useEffect(() => {
     setMounted(true)
-    
-    const updateDimensions = () => {
-      const cols = Math.floor(window.innerWidth / 24)
-      const rows = Math.floor(window.innerHeight / 24)
-      setDimensions({ cols, rows })
+    const update = () => {
+      setDimensions({
+        cols: Math.ceil(window.innerWidth / 24),
+        rows: Math.ceil(window.innerHeight / 24)
+      })
     }
-    
-    updateDimensions()
-    window.addEventListener('resize', updateDimensions)
-    return () => window.removeEventListener('resize', updateDimensions)
+    update()
+    window.addEventListener('resize', update)
+    return () => window.removeEventListener('resize', update)
   }, [])
 
-  if (!mounted || isMobile) return null
+  if (!mounted) return null
 
-  const { cols, rows } = dimensions
-  
-  const maxContentWidth = 896
-  const viewportWidth = typeof window !== 'undefined' ? window.innerWidth : 1920
-  const leftPadding = Math.max((viewportWidth - maxContentWidth) / 2, 16)
-  const rightPadding = leftPadding
-  
-  const leftBlockCols = Math.floor(leftPadding / 24)
-  const rightBlockStart = cols - Math.floor(rightPadding / 24)
+  const cells = Array.from({ length: dimensions.rows * dimensions.cols }, (_, i) => {
+    // Deterministic randomness based on index
+    const seed = (i * 1234567) % 1000
+    const isActive = seed < 25 // low density
+    if (!isActive) return null
 
-  const cells = Array.from({ length: rows * cols }, (_, i) => {
-    const x = i % cols
-    const inBlockZone = x < leftBlockCols || x > rightBlockStart
-    if (!inBlockZone) return 0
-    return Math.random() < 0.04 ? Math.floor(Math.random() * 4) + 1 : 0
+    return {
+      opacity: (seed % 10) / 40 + 0.05,
+      scale: (seed % 5) / 2 + 0.5,
+      delay: (seed % 100) / 10
+    }
   })
 
-  const levels = [
-    "bg-transparent",
-    "bg-green-200",
-    "bg-green-400",
-    "bg-green-600",
-    "bg-green-800",
-  ]
-
   return (
-    <div className="absolute inset-0 h-full w-full -z-10">
-      <div className="absolute inset-0 h-full w-full bg-black bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+    <div className="fixed inset-0 h-full w-full -z-10 bg-black overflow-hidden pointer-events-none">
+      {/* Persistent Grid Lines - extremely subtle but slightly louder */}
       <div
-        className="absolute inset-0 h-full w-full grid"
+        className="absolute inset-0 opacity-[0.06]"
         style={{
-          gridTemplateColumns: `repeat(${cols}, 24px)`,
-          gridTemplateRows: `repeat(${rows}, 24px)`,
+          backgroundImage: `linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)`,
+          backgroundSize: '24px 24px'
+        }}
+      />
+
+      {/* Grid Glow Cells */}
+      <div
+        className="absolute inset-0 grid"
+        style={{
+          gridTemplateColumns: `repeat(${dimensions.cols}, 24px)`,
+          gridTemplateRows: `repeat(${dimensions.rows}, 24px)`,
         }}
       >
-        {cells.map((level, i) => (
-          <div key={i} className={`${levels[level]} h-6 w-6`} />
+        {cells.map((cell, i) => (
+          <div key={i} className="relative w-6 h-6 border-[0.5px] border-white/[0.02]">
+            {cell && (
+              <div
+                className="absolute inset-[2px] rounded-sm"
+                style={{
+                  background: `rgba(16, 185, 129, ${cell.opacity * 2.5})`, // Static intensity
+                  // No animation or radial gradient, just blocky-ish glow
+                  boxShadow: `0 0 8px rgba(16, 185, 129, ${cell.opacity * 0.5})`,
+                }}
+              />
+            )}
+          </div>
         ))}
       </div>
+
+      {/* Deep Shadow Overlays for focus */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-80" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black opacity-60" />
+
+      {/* Noise Texture */}
+      <div className="absolute inset-0 opacity-[0.02] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
     </div>
   )
 }
