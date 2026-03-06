@@ -17,7 +17,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     const { data, content } = matter(fileContents);
 
     return (
-        <div className="max-w-5xl mx-auto px-6 py-20">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-20">
             <Link
                 href="/"
                 className="group flex items-center gap-3 text-emerald-500/40 hover:text-emerald-400 mb-20 transition-all duration-300 font-mono text-[10px] tracking-[0.3em] uppercase"
