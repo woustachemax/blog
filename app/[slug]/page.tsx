@@ -36,12 +36,11 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                         <span className="block text-[10px] font-mono uppercase tracking-widest text-emerald-500/30">Length</span>
                         <span className="block text-sm font-serif text-gray-400 italic">{data.readingTime} Reading</span>
                     </div>
-                    <div className="h-px w-8 bg-emerald-500/10" />
                 </aside>
 
                 <main className="flex-1 max-w-2xl order-1 lg:order-2">
                     <header className="mb-20">
-                        <h1 className="text-3xl lg:text-4xl font-bold text-emerald-400 leading-[1.1] tracking-tight mb-4 font-serif">
+                        <h1 className="text-3xl lg:text-4xl font-bold text-gray-300 leading-[1.1] tracking-tight mb-4 font-serif">
                             {data.title}
                         </h1>
                     </header>
@@ -75,7 +74,6 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                                         <code className="bg-emerald-500/5 text-emerald-400 px-1.5 py-0.5 rounded font-mono text-[13px] border border-emerald-500/10">{children}</code>
                                     ) : (
                                         <div className="relative my-16 group">
-                                            {/* Engineered Corner Accents */}
                                             <div className="absolute -top-1 -left-1 w-2 h-2 border-t border-l border-emerald-500/30" />
                                             <div className="absolute -top-1 -right-1 w-2 h-2 border-t border-r border-emerald-500/30" />
                                             <div className="absolute -bottom-1 -left-1 w-2 h-2 border-b border-l border-emerald-500/30" />
@@ -85,7 +83,6 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                                                 {children}
                                             </code>
 
-                                            {/* Subtitle/Label for Code Block */}
                                             <div className="absolute top-0 right-0 px-3 py-1 text-[10px] font-mono uppercase tracking-widest text-white/10 bg-white/[0.02] border-l border-b border-white/5 rounded-bl-sm">
                                                 Code_Snippet
                                             </div>
