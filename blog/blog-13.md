@@ -74,4 +74,3 @@ Am I going to do this for every concept I learn? Probably not. Was this still wo
 
 (tl:dr: If you're one of my regular readers: hi, still alive, still building. If you're new: I write about things I build while learning, sometimes technical, sometimes a rant, always honest about what I don't know yet. Stick around.)
 
-[Terminate Journal SessionERR_SIGTERM](https://blog.siddharththakkar.xyz/)
