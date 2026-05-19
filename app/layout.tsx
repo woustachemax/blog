@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   description: "Welcome to my blog site!",
   icons:{
     icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
   }
 };
 
