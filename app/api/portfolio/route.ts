@@ -2,21 +2,15 @@ import { NextResponse } from "next/server"
 import fs from "fs/promises"
 import path from "path"
 
-const miniProjects = [
-  {
-    title: "DevBackup",
-    description: "Cross-platform bash tool to backup and restore dev environments across computers",
-    link: "https://github.com/woustachemax/dev-backup",
-    tags: ["Bash", "CLI", "Typescript"],
-  },
-  {
-    title: "Sinkronize",
-    description:
-      "Built a real-time collaboration platform enabling over 50 users to work on shared projects and communicate instantly, with secure backend and responsive design.",
-    link: "https://github.com/woustachemax/sinkronize",
-    tags: ["Next.js", "Express.js", "PostgreSQL", "Prisma", "Tailwind CSS", "Socket.io", "Authentication"],
-  },
-]
+const CORS_HEADERS = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type",
+}
+
+export async function OPTIONS() {
+  return new NextResponse(null, { status: 204, headers: CORS_HEADERS })
+}
 
 const BLOG_DIR = path.join(process.cwd(), "blog")
 
@@ -49,7 +43,6 @@ function extractDescription(fm: Record<string, string>, content: string) {
   first = first.replace(/\[([^\]]+)\]\([^\)]+\)/g, "$1")
   first = first.replace(/`+/g, "")
   first = first.replace(/#+\s*/g, "")
-
   first = first.replace(/\s+/g, " ").trim()
 
   if (!first) return "Short summary of the post."
@@ -63,8 +56,8 @@ export async function GET() {
   let files: string[] = []
   try {
     files = (await fs.readdir(BLOG_DIR)).filter((f) => f.endsWith(".md"))
-  } catch (err) {
-    return NextResponse.json({ miniProjects, blogPosts: [] })
+  } catch {
+    return NextResponse.json({ blogPosts: [] }, { headers: CORS_HEADERS })
   }
 
   const posts = await Promise.all(
@@ -75,18 +68,23 @@ export async function GET() {
         const { fm, content } = parseFrontmatter(txt)
         const title = fm.title ?? file.replace(/\.md$/, "")
         const pubDate = fm.date ?? fm.pubDate ?? null
-        const link = fm.slug
-          ? `https://blog.siddharththakkar.xyz/${fm.slug}`
-          : `https://blog.siddharththakkar.xyz/${file.replace(/\.md$/, "")}`
+        const slug = fm.slug ?? file.replace(/\.md$/, "")
+        const link = `https://blog.siddharththakkar.xyz/${slug}`
         const description = extractDescription(fm, content)
-        return { title, link, pubDate, description }
-      } catch (e) {
+        return { title, link, pubDate, description, slug }
+      } catch {
         return null
       }
     })
   )
 
-  const valid = posts.filter(Boolean) as Array<{ title: string; link: string; pubDate: string | null; description: string }>
+  const valid = posts.filter(Boolean) as Array<{
+    title: string
+    link: string
+    pubDate: string | null
+    description: string
+    slug: string
+  }>
 
   valid.sort((a, b) => {
     const da = a.pubDate ? new Date(a.pubDate).getTime() : 0
@@ -94,7 +92,12 @@ export async function GET() {
     return db - da
   })
 
-  const top3 = valid.slice(0, 3).map((p) => ({ title: p.title, link: p.link, pubDate: p.pubDate, description: p.description }))
+  const top3 = valid.slice(0, 3).map(({ title, link, pubDate, description }) => ({
+    title,
+    link,
+    pubDate,
+    description,
+  }))
 
-  return NextResponse.json({ miniProjects, blogPosts: top3 })
+  return NextResponse.json({ blogPosts: top3 }, { headers: CORS_HEADERS })
 }

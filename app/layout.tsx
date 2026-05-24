@@ -9,7 +9,7 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
-  subsets: ["latin"],
+  subse   ts: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -17,8 +17,6 @@ export const metadata: Metadata = {
   description: "Welcome to my blog site!",
   icons:{
     icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
-    apple: "/favicon.svg",
   }
 };
 
