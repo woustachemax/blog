@@ -9,7 +9,7 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
-  subse   ts: ["latin"],
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
