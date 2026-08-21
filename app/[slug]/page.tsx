@@ -109,9 +109,6 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                                 <div className="absolute inset-0 shadow-[inset_0_0_200px_rgba(244,63,94,0.3)] ring-[32px] ring-rose-500/10 animate-pulse" />
                             </div>
 
-                            <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[8px] border border-rose-500/20 px-1 py-0.5 rounded-sm">
-                                ERR_SIGTERM
-                            </span>
                         </Link>
                     </footer>
                 </main>
