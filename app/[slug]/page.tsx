@@ -49,7 +49,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                         <Badge><CalendarDays size={10} /> {data.date}</Badge>
                         {data.readingTime && <Badge><Clock size={10} /> {data.readingTime}</Badge>}
                     </div>
-                    <h1 className="font-mono text-4xl sm:text-5xl font-bold leading-[1.05] tracking-tight text-[rgb(var(--glitch-primary))]">
+                    <h1 className="font-mono text-4xl sm:text-5xl font-normal leading-[1.05] tracking-tight text-[rgb(var(--glitch-primary))]">
                         {data.title}
                     </h1>
                 </CardHeader>

@@ -26,7 +26,7 @@ export function RecentBlogs() {
                     {blog.readingTime && <Badge>{blog.readingTime}</Badge>}
                   </div>
                 </div>
-                <CardTitle className="flex items-start justify-between gap-4 font-mono text-2xl sm:text-3xl text-[rgb(var(--glitch-primary))] group-hover:text-[rgb(var(--glitch-border-hover))] transition-colors">
+                <CardTitle className="flex items-start justify-between gap-4 font-mono font-normal text-2xl sm:text-3xl text-[rgb(var(--glitch-primary))] group-hover:text-[rgb(var(--glitch-border-hover))] transition-colors">
                   {blog.title}
                   <ArrowUpRight className="mt-1 shrink-0 text-[rgb(var(--glitch-accent)/60%)] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[rgb(var(--glitch-accent))]" size={20} />
                 </CardTitle>
