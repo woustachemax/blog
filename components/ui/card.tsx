@@ -1,0 +1,117 @@
+import * as React from "react"
+import { cn } from "@/lib/utils"
+
+function Card({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card"
+      className={cn(
+        "bg-[rgb(var(--glitch-surface))] text-[rgb(var(--glitch-primary))] border border-[rgb(var(--glitch-border)/50%)] [clip-path:var(--glitch-clip,polygon(0_var(--glitch-cut,8px),var(--glitch-cut,8px)_0,calc(100%-var(--glitch-cut,8px))_0,100%_var(--glitch-cut,8px),100%_calc(100%-var(--glitch-cut,8px)),calc(100%-var(--glitch-cut,8px))_100%,var(--glitch-cut,8px)_100%,0_calc(100%-var(--glitch-cut,8px))))] rounded-[var(--glitch-radius,0px)] relative overflow-hidden group",
+        "shadow-[inset_0_1px_0_0_rgb(var(--glitch-accent)/20%),0_0_0_1px_rgb(var(--glitch-accent)/15%),0_4px_24px_rgba(0,0,0,0.4)]",
+        "hover:border-[rgb(var(--glitch-border-hover)/70%)] hover:shadow-[inset_0_1px_0_0_rgb(var(--glitch-accent)/30%),0_0_16px_rgb(var(--glitch-accent)/30%),0_0_32px_rgb(var(--glitch-accent)/15%)]",
+        "transition-all duration-300",
+        "before:absolute before:inset-0 before:bg-[linear-gradient(0deg,transparent_0%,rgb(var(--glitch-accent)/3%)_50%,transparent_100%)] before:bg-size[100%_4px] before-animate[scanline_8s_linear_infinite] before:pointer-events-none before:z-0",
+        "after:content-[''] after:absolute after:top-0 after:left-0 after:w-[calc(0.75rem+var(--glitch-radius,0px)/2)] after:h-[calc(0.75rem+var(--glitch-radius,0px)/2)] after:rounded-tl-[var(--glitch-radius,0px)] after:border-l-2 after:border-t-2 after:border-[rgb(var(--glitch-accent)/60%)] after:transition-all after:duration-300 hover:after:w-[calc(1rem+var(--glitch-radius,0px)/2)] hover:after:h-[calc(1rem+var(--glitch-radius,0px)/2)] hover:after:border-[rgb(var(--glitch-accent))]",
+        "*:relative *:z-1",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-header"
+      className={cn(
+        "@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-2 px-6 py-4",
+        "has-data-[slot=card-action]:grid-cols-[1fr_auto]",
+        "border-b border-[rgb(var(--glitch-border)/30%)]",
+        "relative before:absolute before:inset-x-0 before:bottom-0 before:h-px before:bg-[linear-gradient(to_right,transparent,rgb(var(--glitch-accent)/50%),transparent)]",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-title"
+      className={cn(
+        "leading-none font-mono font-bold tracking-wider uppercase text-sm",
+        "text-[rgb(var(--glitch-primary))]",
+        "group-hover:[text-shadow:0_0_8px_rgb(var(--glitch-accent)/60%)] transition-all duration-300",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function CardDescription({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-description"
+      className={cn(
+        "text-[rgb(var(--glitch-primary)/70%)] text-xs font-mono tracking-wide",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function CardAction({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-action"
+      className={cn(
+        "col-start-2 row-span-2 row-start-1 self-start justify-self-end",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function CardContent({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-content"
+      className={cn(
+        "px-6 py-4 font-mono text-sm",
+        "text-[rgb(var(--glitch-primary)/90%)]",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-footer"
+      className={cn(
+        "flex items-center px-6 py-4 gap-3",
+        "border-t border-[rgb(var(--glitch-border)/30%)]",
+        "relative before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-[linear-gradient(to_right,transparent,rgb(var(--glitch-accent)/50%),transparent)]",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+export {
+  Card,
+  CardHeader,
+  CardFooter,
+  CardTitle,
+  CardAction,
+  CardDescription,
+  CardContent,
+}

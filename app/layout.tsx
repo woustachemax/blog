@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Blogs",
   description: "Welcome to my blog site!",
-  icons:{
+  icons: {
     icon: "/favicon.svg",
-  }
+  },
 };
 
 export default function RootLayout({
@@ -26,9 +26,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    // glitchcn/ui theme: Glacier, dark mode.
+    <html lang="en" data-glitch-theme="glacier" data-mode="dark">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Single:wght@100..900&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[rgb(var(--glitch-surface))] text-[rgb(var(--glitch-primary))]`}
       >
         {children}
       </body>
